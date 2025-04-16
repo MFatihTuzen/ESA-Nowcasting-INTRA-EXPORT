@@ -2,7 +2,7 @@
 # Load Packages ------------------------------------------------------------
 
 packages <-
-  c("pacman",
+  c(
     "tidyverse",
     "RJDemetra",
     "lubridate",
@@ -10,10 +10,7 @@ packages <-
     "jsonlite",
     "zoo",
     "eurostat",
-    "tictoc",
-    "progress",
-    "rsdmx",
-    "Metrics"
+    "rsdmx"
   )
 
 invisible(lapply(packages, function(pkg) library(pkg, character.only = TRUE)))
