@@ -42,8 +42,8 @@ You are free to use, modify, and distribute this code, provided that the origina
 Clone the repository and set up the environment:
 
 ``` bash
-git clone https://github.com/yourusername/EXTRA-IMPORT.git
-cd EXTRA-IMPORT
+git clone https://github.com/yourusername/INTRA-EXPORT.git
+cd INTRA-EXPORT
 ```
 
 Open R and run:
