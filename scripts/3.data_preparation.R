@@ -1,7 +1,7 @@
 
 # y_star (Industrial Production Index (IPI)) ------------------------------------------------------------------
 
-# impute missing data of hicp for last period
+# impute missing data of ipi for last periods
 
 last_data_ipi <- max(ipi$TIME_PERIOD)
 non_missing_countries_ipi <- ipi |> 
@@ -35,7 +35,7 @@ ipi_rebase <- ipi_imputed |>
   ungroup() |> 
   select(country_code = geo,TIME_PERIOD,index,Year)
 
-# get industrial production index by weighting foreign trade for every country
+# get foreign industrial production index by using trade weights for every country
 
 y_star <- get_star_reg(ipi_rebase)
 
@@ -50,14 +50,14 @@ er_rebase <- exc_rate |>
   select(country_code = geo,TIME_PERIOD,index,Year)
 
 
-# get exchange rates by weighting foreign trade for every country
+# get foreign exchange rates by using trade weights for every country
 
 er_star <- get_star_reg(er_rebase)
 
 
 # rel_dp (Relative Harmonised Index of Consumer Prices (HICP)) ------------------------------------------------------------------
 
-# impute missing data of hicp for last period
+# impute missing data of hicp for last periods
 last_data_hicp <- max(hicp$TIME_PERIOD)
 non_missing_countries_hicp <- hicp |> 
   filter(TIME_PERIOD == last_data_hicp) |> 
@@ -82,7 +82,7 @@ hicp_imputed <- if( length(non_missing_countries_hicp) < length(countries)) {
   
   }
 
-#dp_star (Harmonised Index of Consumer Prices (HICP))
+# dp_star (Harmonised Index of Consumer Prices (HICP))
 hicp_rebase <- hicp_imputed |>
   filter(geo %in% countries) |> 
   group_by(geo) |> 
@@ -91,7 +91,7 @@ hicp_rebase <- hicp_imputed |>
   ungroup() |> 
   select(country_code = geo,TIME_PERIOD,index,Year)
 
-# get Harmonised Index of Consumer Prices by weighting foreign trade for every country
+# get foreign Harmonised Index of Consumer Prices by using trade weights for every country
 
 rel_dp <- get_star_reg(hicp_rebase) |> 
   pivot_longer(cols = -c(Date), names_to = "country_code", values_to = "index") |>
@@ -117,7 +117,7 @@ imp_reg <- intra_imp |>
   arrange(Date) |>
   mutate(Date = paste0(year(Date), "M", month(Date)))
 
-# INTRA-EXPORT ----
+# INTRA-EXPORT target data ----
 
 target <- intra_exp |> 
   pivot_wider(id_cols = TIME_PERIOD,

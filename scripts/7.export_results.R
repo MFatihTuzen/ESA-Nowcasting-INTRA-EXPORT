@@ -5,7 +5,7 @@
 nowcast_results <- rbind(nowcast_results_mv,nowcast_results_uv,nowcast_results_avg)
 write.table(nowcast_results,paste0("./Results/", nowcast_period,"/Nowcasting_Results.csv"), sep = ";",dec=".", row.names=FALSE)
 
-# write to json -----------------------------------------------------------
+# Export nowcast results to json ----
 
 json_list <- fromJSON("./point_estimates.json")
 
@@ -29,7 +29,6 @@ for (entry_num in entry_list) {
   }
 }
 
-# nowcast results to json
 write_json(json_list,paste0("./Results/",nowcast_period,"/point_estimates.json"),auto_unbox = TRUE,null="null", pretty = TRUE)
 
 

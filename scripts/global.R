@@ -23,6 +23,7 @@ Subject <- "INTRA_EXPORT"
 # Trade Weights Data Import -------------------------------------------------------------
 
 # foreign trade weights between 2014 and 2025 for every country -------------------------------------------------------------
+# # This is necessary for nowcasting model will be used in entry 1
 trade_weights <- read.xlsx("./Data/intra_export_trade_weights.xlsx") 
 countries <- unique(trade_weights$trade_partner)
 
