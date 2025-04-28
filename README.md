@@ -77,7 +77,7 @@ Feel free to open an issue or submit a pull request.
 # 📂 Directory Structure
 
 ```         
-EXTRA-IMPORT/
+INTRA-EXPORT/
 ├── Data/
 ├── Results/
 ├── Scripts/
